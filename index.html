@@ -10,21 +10,13 @@
 </head>
 
 <body>
-    <div id="game"></div>
+    <div id="game" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     <div class="inventory">
         <div class="items">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
-            <img class="item" src="assets/beer.jpg">
+            <img id="Beer" class="item" draggable="true" ondragstart="drag(event)" src="assets/beer.jpg">
         </div>
     </div>
+    <script src="js/inventory.js"></script>
     <script src="js/main.js"></script>
 </body>
 

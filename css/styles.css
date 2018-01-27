@@ -1,10 +1,7 @@
 html, body {
     height: auto;
-    width: 100%;
+    width: auto;
     margin-top: 50px;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
 }
 
 canvas {
