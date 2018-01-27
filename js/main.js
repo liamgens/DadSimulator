@@ -42,6 +42,7 @@ function create() {
     thirst = MAX_STAT;
     happiness = MAX_STAT;
 
+
     game.background = game.add.sprite(0, 0, 'background');
 
 
@@ -49,7 +50,8 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     // Dad sprite and physics setup
-    dad = game.add.sprite(0, 0, 'dad');
+    let start = getRandomLocation();
+    dad = game.add.sprite(start.x, start.y, 'dad');
     game.physics.enable(dad, Phaser.Physics.ARCADE);
     dad.scale.setTo(0.6, 0.6);
     // dad.enableBody = true;
@@ -58,8 +60,6 @@ function create() {
     // Button testing
     // button = game.add.button(100, 100, 'button', actionOnClick, this, 2, 1, 0);
     // button.scale.setTo(0.1, 0.1);
-    getRandomLocation();
-
 
 }
 
@@ -125,10 +125,12 @@ function getRandomLocation() {
     Math.floor(Math.random() * 10 + 1);
 
     let xCoor = getRandomInteger(MIN_X, MAX_X);
-    let yCoor = getRandomInteger(MIN_Y, MAX_Y);
+    let yCoor = getRandomInteger(MIN_Y, MAX_Y) - 220;
 
-    console.log(MAX_X, MAX_Y);
-    console.log(xCoor, yCoor);
+    return {
+        x: xCoor,
+        y: yCoor
+    }
 }
 
 function getRandomInteger(min, max) {
