@@ -13,6 +13,7 @@ let dad;
 let beer;
 
 function preload() {
+    // Basic game canvas initialization
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
