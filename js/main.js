@@ -1,6 +1,7 @@
-let game = new Phaser.Game(480, 320, Phaser.AUTO, null, {
+let game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, null, {
     preload: preload, create: create, update: update
 });
+
 
 let health, hunger, thirst, happiness; // The dad's stats
 
@@ -14,12 +15,15 @@ let beer;
 
 let button;
 
+
 function preload() {
     // Basic game canvas initialization
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
+
     game.stage.backgroundColor = '#eee';
+
 
     // Load in the game assests
     game.load.image('dad', 'assets/dad.png');
@@ -33,6 +37,9 @@ function create() {
     hunger = MAX_STAT;
     thirst = MAX_STAT;
     happiness = MAX_STAT;
+
+    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+
 
     // Add in game physics
     game.physics.startSystem(Phaser.Physics.ARCADE);
