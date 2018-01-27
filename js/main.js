@@ -1,4 +1,4 @@
-let game = new Phaser.Game(1050, 588, Phaser.AUTO, null, {
+let game = new Phaser.Game(1050, 588, Phaser.AUTO, 'game', {
     preload: preload, create: create, update: update
 });
 
@@ -19,10 +19,6 @@ let button;
 function preload() {
     // Basic game canvas initialization
     // game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    game.scale.pageAlignHorizontally = true;
-    game.scale.pageAlignVertically = true;
-    game.world.setBounds(0, 0, 800, 300);
-
 
     // game.stage.backgroundColor = '#eee';
 
