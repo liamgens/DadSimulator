@@ -1,4 +1,4 @@
-let game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, null, {
+let game = new Phaser.Game(1050, 588, Phaser.AUTO, null, {
     preload: preload, create: create, update: update
 });
 
@@ -18,17 +18,19 @@ let button;
 
 function preload() {
     // Basic game canvas initialization
-    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    // game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
 
-    game.stage.backgroundColor = '#eee';
-
+    // game.stage.backgroundColor = '#eee';
 
     // Load in the game assests
     game.load.image('dad', 'assets/dad.png');
     game.load.image('beer', 'assets/beer.jpg');
     game.load.image('button', 'assets/button.png');
+    game.load.image('background', 'assets/livingroom.png');
+
+
 }
 
 function create() {
@@ -38,7 +40,7 @@ function create() {
     thirst = MAX_STAT;
     happiness = MAX_STAT;
 
-    game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+    game.background = game.add.sprite(0, 0, 'background');
 
 
     // Add in game physics
@@ -51,8 +53,8 @@ function create() {
     dad.scale.setTo(0.2, 0.2);
 
     // Button testing
-    button = game.add.button(100, 100, 'button', actionOnClick, this, 2, 1, 0);
-    button.scale.setTo(0.1, 0.1);
+    // button = game.add.button(100, 100, 'button', actionOnClick, this, 2, 1, 0);
+    // button.scale.setTo(0.1, 0.1);
 
 }
 
