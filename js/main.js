@@ -63,6 +63,10 @@ function update() {
 
 }
 
+function itemRecieved(item) {
+    console.log(item);
+}
+
 function actionOnClick() {
     console.log('Hunger:', hunger);
     depleteHunger();
@@ -115,7 +119,7 @@ function getRandomLocation() {
     const MIN_X = 5;
     const MIN_Y = 458;
 
-    const MAX_X = 1025;
+    const MAX_X = 865;
     const MAX_Y = 585;
 
     Math.floor(Math.random() * 10 + 1);
