@@ -1,0 +1,34 @@
+html, body {
+    height: auto;
+    width: 100%;
+    margin-top: 50px;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+canvas {
+    padding: 0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.inventory {
+    height: 100px;
+    width: 1050px;
+    background-color: #F8ECC2;
+    margin-left:auto;
+    margin-right:auto;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.items {
+    padding: 10px;
+}
+
+.item {
+    height: 64px;
+    margin-right: 16px;
+    width: auto;
+}
