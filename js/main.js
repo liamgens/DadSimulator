@@ -7,10 +7,12 @@ let health, hunger, thirst, happiness; // The dad's stats
 const MAX_STAT = 100;
 const MIN_STAT = 0;
 
-const DEPLETION_RATE = 0.005;
+const DEPLETION_RATE = 1;
 
 let dad;
 let beer;
+
+let button;
 
 function preload() {
     // Basic game canvas initialization
@@ -22,6 +24,7 @@ function preload() {
     // Load in the game assests
     game.load.image('dad', 'assets/dad.png');
     game.load.image('beer', 'assets/beer.jpg');
+    game.load.image('button', 'assets/button.png');
 }
 
 function create() {
@@ -40,12 +43,21 @@ function create() {
     dad.body.collideWorldBounds = true;
     dad.scale.setTo(0.2, 0.2);
 
-    dad.body.velocity.set(25, 0);
+    // Button testing
+    button = game.add.button(100, 100, 'button', actionOnClick, this, 2, 1, 0);
+    button.scale.setTo(0.1, 0.1);
 
 }
 
 function update() {
 
+
+}
+
+function actionOnClick() {
+    console.log('Hunger:', hunger);
+    depleteHunger();
+    console.log('Hunger:', hunger);
 }
 
 function eat(foodType) {
