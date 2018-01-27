@@ -21,6 +21,8 @@ function preload() {
     // game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
     game.scale.pageAlignVertically = true;
+    game.world.setBounds(0, 0, 800, 300);
+
 
     // game.stage.backgroundColor = '#eee';
 
@@ -49,17 +51,19 @@ function create() {
     // Dad sprite and physics setup
     dad = game.add.sprite(0, 0, 'dad');
     game.physics.enable(dad, Phaser.Physics.ARCADE);
-    dad.body.collideWorldBounds = true;
-    dad.scale.setTo(0.2, 0.2);
+    dad.scale.setTo(0.6, 0.6);
+    // dad.enableBody = true;
+    // dad.body.collideWorldBounds = true;
 
     // Button testing
     // button = game.add.button(100, 100, 'button', actionOnClick, this, 2, 1, 0);
     // button.scale.setTo(0.1, 0.1);
+    getRandomLocation();
+
 
 }
 
 function update() {
-
 
 }
 
@@ -110,3 +114,24 @@ function depleteHunger() {
 function depleteThirst() {
     thirst -= DEPLETION_RATE;
 }
+
+function getRandomLocation() {
+    const MIN_X = 5;
+    const MIN_Y = 458;
+
+    const MAX_X = 1025;
+    const MAX_Y = 585;
+
+    Math.floor(Math.random() * 10 + 1);
+
+    let xCoor = getRandomInteger(MIN_X, MAX_X);
+    let yCoor = getRandomInteger(MIN_Y, MAX_Y);
+
+    console.log(MAX_X, MAX_Y);
+    console.log(xCoor, yCoor);
+}
+
+function getRandomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
