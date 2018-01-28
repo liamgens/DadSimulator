@@ -22,6 +22,7 @@ function preload() {
     game.load.image('beer', 'assets/beer.jpg');
     game.load.image('button', 'assets/button.png');
     game.load.image('background', 'assets/livingroom.png');
+    game.load.image('speech', 'assets/speech.png');
 
 }
 
@@ -71,11 +72,24 @@ function moveDad() {
     }, 4000);
 }
 
-// function toggleBeer(toggle) {
-//     if (toggle === true) {
+function speak(phrase) {
+    speech = game.add.sprite(75, -215, 'speech');
+    speech.scale.setTo(0.6, 0.6);
+    dad.addChild(speech);
+    let text = game.add.text(60, 30, phrase, { font: "40px Arial", fill: "black" });
+    speech.addChild(text);
+}
 
-//     }
-// }
+function toggleBeer(toggle) {
+    if (toggle) {
+        beer = game.add.sprite(75, 35, 'beer');
+        beer.scale.setTo(0.4, 0.4);
+        beer.angle = 30;
+        dad.addChild(beer);
+    } else {
+        beer.kill();
+    }
+}
 
 function itemRecieved(item) {
     console.log(item);
