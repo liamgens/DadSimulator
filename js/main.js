@@ -102,9 +102,10 @@ function speak(phrase) {
     speech.scale.setTo(0.6, 0.6);
     dad.addChild(speech);
 
+    $('.title').text(phrase);
+
     setTimeout(function () {
         speech.kill();
-        text.destroy();
     }, 10000);
 }
 

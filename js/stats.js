@@ -57,7 +57,7 @@ function validateStats(stats) {
 function decrementStats() {
     updateStat('HUNGER', -5);
     updateStat('HAPPINESS', -5);
-    updateStat('THIRST', -5);
+    updateStat('THIRST', -10);
 
     if (getStat('HUNGER') + getStat('THIRST') + getStat('HAPPINESS') < 150) {
         updateStat('HEALTH', -10);
