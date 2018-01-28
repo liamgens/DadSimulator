@@ -1,8 +1,7 @@
 if (!Cookies.get("gameStarted")) {
-    Cookies.set("gameStarted", true)
     Cookies.set("items", [{
         name: "beer",
-        quantity: 3, 
+        quantity: 3,
     }])
     Cookies.set("totalMoney", 20)
 }
