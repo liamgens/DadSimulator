@@ -12,6 +12,7 @@
 
 <body>
     <h1 class="title">Hi, I'm Dad</h1>
+
     <div id="game" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     <div class="inventory">
         <div id="inventoryitems" class="items">
@@ -21,7 +22,7 @@
             <span class="money" id="money">$0</span>
         </div>
     </div>
-    
+
     <div class="stats">
         <div class="bar">
             <div class="barvalue" id="happiness"></div>
@@ -43,7 +44,9 @@
 
 
     <div id="popshop" class="popshop">
-        <div id="popshopnavbar" class="navbar"><span onclick="closePopShop();">🗙&nbsp;</span></div>
+        <div id="popshopnavbar" class="navbar">
+            <span onclick="closePopShop();">🗙&nbsp;</span>
+        </div>
         <div id="shop-items"></div>
     </div>
 

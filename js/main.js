@@ -100,8 +100,6 @@ function speak(phrase) {
     speech = game.add.sprite(75, -215, 'speech');
     speech.scale.setTo(0.6, 0.6);
     dad.addChild(speech);
-    let text = game.add.text(60, 30, phrase, { font: "40px Arial", fill: "black" });
-    speech.addChild(text);
 
     setTimeout(function () {
         speech.kill();
