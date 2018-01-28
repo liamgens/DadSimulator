@@ -90,7 +90,7 @@ function create() {
 
     game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, payday, this);
 
-    game.time.events.repeat(Phaser.Timer.SECOND * 225, Infinity, addAllowance, this);
+    game.time.events.repeat(Phaser.Timer.SECOND * 60, Infinity, addAllowance, this);
 
 }
 
@@ -131,9 +131,13 @@ function hide() {
 }
 
 function itemRecieved(item) {
-    if (hasItem) {
+    if (hasItem && item != "DRILL" && item != "HAMMER") {
         killAllItems();
+    } else {
+        drill.visible = false;
+        hammer.visible = false;
     }
+
     hasItem = true;
 
     const data = GAME_PRODUCTS[item.toLowerCase()];
@@ -196,6 +200,6 @@ function payday() {
 }
 
 function addAllowance() {
-    Cookies.set("allowance", Cookies.getJSON("allowance") + 5);
+    Cookies.set("allowance", Cookies.getJSON("allowance") + 10);
     updateAllowance();
 }
