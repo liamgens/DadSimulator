@@ -10,7 +10,7 @@ const GAME_PRODUCTS = {
         },
     },
     burger: {
-        description: "A nice, ice cold beer will keep your Dad's thirst quenched and happiness up.",
+        description: "That's some good fucking meat.",
         price: 5,
         stat: {
             health: 2,
@@ -20,7 +20,7 @@ const GAME_PRODUCTS = {
         },
     },
     chicken: {
-        description: "A nice, ice cold beer will keep your Dad's thirst quenched and happiness up.",
+        description: "Tastes like fucking chicken.",
         price: 10,
         stat: {
             health: 7,

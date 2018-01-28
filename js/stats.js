@@ -1,6 +1,5 @@
 function updateStat(statType, value) {
     let stats = Cookies.getJSON("dad");
-    console.log(stats);
     switch (statType) {
         case 'HEALTH':
             stats.health += value;
