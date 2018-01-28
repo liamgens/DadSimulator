@@ -127,6 +127,7 @@ canvas {
     right: 10px;
     top: 20px;
     overflow-y: scroll;
+    z-index: 10000;
 }
 
 .popshop .navbar {
