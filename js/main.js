@@ -80,52 +80,20 @@ function speak(phrase) {
     speech.addChild(text);
 }
 
-function toggleBeer(toggle) {
-    if (toggle) {
-        beer = game.add.sprite(75, 35, 'beer');
-        beer.scale.setTo(0.4, 0.4);
-        beer.angle = 30;
-        dad.addChild(beer);
-    } else {
-        beer.kill();
-    }
+function drinkBeer() {
+    beer = game.add.sprite(75, 35, 'beer');
+    beer.scale.setTo(0.4, 0.4);
+    beer.angle = 30;
+    dad.addChild(beer);
+    setTimeout(function () { beer.kill() }, 7000);
 }
 
 function itemRecieved(item) {
-    console.log(item);
-}
-
-function eat(foodType) {
-    const CHICKEN = 15;
-    const BURGER = 25;
-    const STEAK = 40;
-
-    let updatedHunger = hunger;
-
-    switch (foodType) {
-        case 'CHICKEN':
-            updatedHunger += CHICKEN;
-        case 'BURGER':
-            updatedHunger += BURGER;
-        case 'STEAK':
-            updatedHunger += STEAK;
+    switch (item) {
+        case 'BEER':
+            drinkBeer();
         default:
             break;
-    }
-
-    if (updatedHunger > MAX_STAT) {
-        hunger = MAX_STAT;
-    } else {
-        hunger = updatedHunger;
-    }
-}
-
-function drink() {
-    const BEER = 20;
-    if (thirst += BEER > MAX_STAT) {
-        thirst = MAX_STAT;
-    } else {
-        thirst += BEER
     }
 }
 
