@@ -60,6 +60,8 @@ function decrementStats() {
 
     if (getStat('HUNGER') + getStat('THIRST') + getStat('HAPPINESS') < 150) {
         updateStat('HEALTH', -10);
+    } else {
+        updateStat('HEALTH', 5);
     }
 
     updateStats();
