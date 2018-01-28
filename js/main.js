@@ -7,14 +7,19 @@ const MIN_STAT = 0;
 
 let dad;
 let beer;
+let burger;
+let chicken;
 
 function preload() {
     // Load in the game assests
     game.load.image('dad', 'assets/dad.png');
-    game.load.image('beer', 'assets/beer.jpg');
+    game.load.image('beer', 'assets/beer.png');
     game.load.image('button', 'assets/button.png');
     game.load.image('background', 'assets/livingroom.png');
     game.load.image('speech', 'assets/speech.png');
+    game.load.image('burger', 'assets/burger.png');
+    game.load.image('chicken', 'assets/chicken.png');
+
 }
 
 function create() {
@@ -81,7 +86,7 @@ function speak(phrase) {
 
     setTimeout(function () {
         speech.kill();
-        text.destory();
+        text.destroy();
     }, 10000);
 }
 
@@ -96,10 +101,38 @@ function drinkBeer() {
     }, 7000);
 }
 
+function eatBurger() {
+    burger = game.add.sprite(55, 35, 'burger');
+    burger.scale.setTo(0.2, 0.2);
+    dad.addChild(burger);
+
+    setTimeout(function () {
+        burger.kill();
+    }, 7000);
+}
+
+function eatChicken() {
+    chicken = game.add.sprite(105, -7, 'chicken');
+    chicken.scale.setTo(0.5, 0.5);
+    chicken.angle = 60;
+    dad.addChild(chicken);
+
+    setTimeout(function () {
+        chicken.kill();
+    }, 7000);
+}
+
 function itemRecieved(item) {
     switch (item) {
         case 'BEER':
             drinkBeer();
+            break;
+        case 'BURGER':
+            eatBurger();
+            break;
+        case 'CHICKEN':
+            eatChicken();
+            break;
         default:
             break;
     }
