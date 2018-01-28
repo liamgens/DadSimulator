@@ -127,6 +127,10 @@ function itemRecieved(item) {
         default:
             break;
     }
+
+    setTimeout(function () {
+        killAllItems();
+    }, 7000);
 }
 
 function getRandomLocation() {
