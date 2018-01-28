@@ -15,6 +15,8 @@ let beer;
 
 let button;
 
+let isDadChugginOut;
+
 
 function preload() {
     // Load in the game assests
@@ -32,6 +34,7 @@ function create() {
     hunger = MAX_STAT;
     thirst = MAX_STAT;
     happiness = MAX_STAT;
+    isDadChugginOut = false;
 
     game.background = game.add.sprite(0, 0, 'background');
 
@@ -81,11 +84,15 @@ function speak(phrase) {
 }
 
 function drinkBeer() {
+    isDadChugginOut = true;
     beer = game.add.sprite(75, 35, 'beer');
     beer.scale.setTo(0.4, 0.4);
     beer.angle = 30;
     dad.addChild(beer);
-    setTimeout(function () { beer.kill() }, 7000);
+    setTimeout(function () {
+        beer.kill();
+        isDadChugginOut = false;
+    }, 7000);
 }
 
 function itemRecieved(item) {
