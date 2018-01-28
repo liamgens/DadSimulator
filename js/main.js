@@ -5,7 +5,7 @@ let game = new Phaser.Game(1050, 588, Phaser.AUTO, 'game', {
 const MAX_STAT = 100;
 const MIN_STAT = 0;
 
-let dad, beer, burger, chicken, sound;
+var dad, beer, burger, chicken, sound;
 let hasItem = false;
 
 function preload() {
@@ -17,6 +17,9 @@ function preload() {
     game.load.image('speech', 'assets/speech.png');
     game.load.image('burger', 'assets/burger.png');
     game.load.image('chicken', 'assets/chicken.png');
+    game.load.image('drill', 'assets/drill.png');
+    game.load.image('hammer', 'assets/hammer.png');
+    game.load.image('grill', 'assets/grill.png');
 }
 
 function create() {
@@ -64,6 +67,12 @@ function create() {
     dad.addChild(beer);
     beer.visible = false;
 
+    drill = game.add.sprite(-130, 85, 'drill');
+    drill.scale.setTo(0.07, 0.07);
+    drill.angle = -45;
+    dad.addChild(drill);
+    drill.visible = false;
+
     // Have the dad move around the room
     game.time.events.repeat(Phaser.Timer.SECOND * 7, Infinity, moveDad, this);
 
@@ -77,16 +86,9 @@ function create() {
 
     game.time.events.repeat(Phaser.Timer.SECOND * 450, Infinity, addAllowance, this);
 
-//liam  ur weird
-
-
 }
 
-function update() {
-
-}
-
-
+function update() { }
 
 function moveDad() {
     // Moves the dad around the floor in the room
@@ -127,21 +129,13 @@ function itemRecieved(item) {
         killAllItems();
     }
     hasItem = true;
-    switch (item) {
-        case 'BEER':
-            beer.visible = true;
-            updateStat('THIRST', 20);
-            break;
-        case 'BURGER':
-            burger.visible = true;
-            updateStat('HUNGER', 25);
-            break;
-        case 'CHICKEN':
-            chicken.visible = true;
-            updateStat('HUNGER', 15);
-            break;
-        default:
-            break;
+
+    const data = GAME_PRODUCTS[item.toLowerCase()];
+    window[item.toLowerCase()].visible = true;
+
+    for (stat in data.stat) {
+        let num = data.stat[stat];
+        updateStat(stat.toUpperCase(), num);
     }
 
     setTimeout(function () {

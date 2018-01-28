@@ -30,7 +30,6 @@ function loadShopItems() {
 
 function updateInventory() {
     const allItems = Cookies.getJSON("items")
-    console.log(allItems)
     $('#inventoryitems').html("")
     for (let item of allItems) {
         $('#inventoryitems').append(`
@@ -42,7 +41,7 @@ function updateInventory() {
     }
 
     $('#money').text(`$${Cookies.get("totalMoney")}`)
-    
+
     updateStats()
 }
 
