@@ -68,7 +68,7 @@ function create() {
     //Have the dad make jokes every so often
     game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, makeJoke, this);
 
-    game.time.events.repeat(Phaser.Timer.SECOND, Infinity, decrementStats, this);
+    game.time.events.repeat(Phaser.Timer.SECOND * 10, Infinity, decrementStats, this);
 
 }
 
@@ -121,6 +121,7 @@ function itemRecieved(item) {
     switch (item) {
         case 'BEER':
             beer.visible = true;
+            updateStat('THIRST', 20);
             break;
         case 'BURGER':
             burger.visible = true;
