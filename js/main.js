@@ -8,8 +8,6 @@ const MIN_STAT = 0;
 let dad;
 let beer;
 
-let button;
-
 function preload() {
     // Load in the game assests
     game.load.image('dad', 'assets/dad.png');
@@ -46,6 +44,10 @@ function create() {
     // Have the dad move around the room
     game.time.events.repeat(Phaser.Timer.SECOND * 7, Infinity, moveDad, this);
 
+    //Have the dad make jokes every so often
+    game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, makeJoke, this);
+
+
 }
 
 function update() {
@@ -76,6 +78,11 @@ function speak(phrase) {
     dad.addChild(speech);
     let text = game.add.text(60, 30, phrase, { font: "40px Arial", fill: "black" });
     speech.addChild(text);
+
+    setTimeout(function () {
+        speech.kill();
+        text.destory();
+    }, 10000);
 }
 
 function drinkBeer() {
@@ -83,6 +90,7 @@ function drinkBeer() {
     beer.scale.setTo(0.4, 0.4);
     beer.angle = 30;
     dad.addChild(beer);
+
     setTimeout(function () {
         beer.kill();
     }, 7000);
@@ -119,52 +127,17 @@ function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function updateStat(statType, value) {
-    let stats = Cookies.getJSON("dad");
-    console.log(stats);
-    switch (statType) {
-        case 'HEALTH':
-            stats.health += value;
-            break;
-        case 'HUNGER':
-            stats.hunger += value;
-            break;
-        case 'THIRST':
-            stats.thirst += value;
-            break;
-        case 'HAPPINESS':
-            stats.happiness += value;
-            break;
-    }
-
-    stats = validateStats(stats);
-    Cookies.set("dad", stats);
-}
-
-function getStat(statType) {
-    switch (statType) {
-        case 'HEALTH':
-            return Cookies.getJSON("dad").health;
-        case 'HUNGER':
-            return Cookies.getJSON("dad").hunger;
-        case 'THIRST':
-            return Cookies.getJSON("dad").thirst;
-        case 'HAPPINESS':
-            return Cookies.getJSON("dad").happiness;
-    }
-}
-
-function validateStats(stats) {
-    let correctedStats = stats;
-
-    for (let stat in stats) {
-        if (stats[stat] < MIN_STAT) {
-            correctedStats[stat] = MIN_STAT;
-        } else if (stats[stat] > MAX_STAT) {
-            correctedStats[stat] = MAX_STAT;
+function makeJoke() {
+    fetch("https://icanhazdadjoke.com/", {
+        headers: {
+            'Accept': 'text/plain'
         }
-    }
 
-    return correctedStats;
+    }).then(function (response) {
+        return response.text();
+    }).then(function (text) {
+        speak(text);
+    });
+
+
 }
-
