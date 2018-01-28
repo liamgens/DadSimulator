@@ -6,9 +6,15 @@ if (!Cookies.get("gameStarted")) {
     Cookies.set("totalMoney", 20)
 }
 
+$('.youdiedman').hide()
+
 loadShopItems()
 updateInventory()
 updateAllowance()
+
+function endGame() {
+    $('.youdiedman').fadeIn()
+}
 
 function resetGame() {
     Object.keys(Cookies.get()).forEach(function(cookieName) {
