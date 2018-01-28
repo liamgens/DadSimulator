@@ -32,9 +32,7 @@ function create() {
     thirst = MAX_STAT;
     happiness = MAX_STAT;
 
-
     game.background = game.add.sprite(0, 0, 'background');
-
 
     // Add in game physics
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -44,8 +42,10 @@ function create() {
     dad = game.add.sprite(start.x, start.y, 'dad');
     game.physics.enable(dad, Phaser.Physics.ARCADE);
     dad.scale.setTo(0.6, 0.6);
+    dad.anchor.setTo(0.5, 0.5);
 
-    game.time.events.repeat(Phaser.Timer.SECOND * 8, Infinity, moveDad, this);
+    // Have the dad move around the room
+    game.time.events.repeat(Phaser.Timer.SECOND * 7, Infinity, moveDad, this);
 
 }
 
@@ -54,21 +54,31 @@ function update() {
 }
 
 function moveDad() {
+    // Moves the dad around the floor in the room
     let target = getRandomLocation();
+
+    // Flips the dad sprite to face the correct direction
+    if (target.x < dad.x) {
+        dad.scale.x = -0.6;
+    } else if (target.x > dad.x) {
+        dad.scale.x = 0.6;
+    }
+
     game.physics.arcade.moveToXY(dad, target.x, target.y, 100, 4000);
-    setTimeout(function () { dad.body.velocity.setTo(0, 0); }, 4000);
 
-
+    setTimeout(function () {
+        dad.body.velocity.setTo(0, 0);
+    }, 4000);
 }
+
+// function toggleBeer(toggle) {
+//     if (toggle === true) {
+
+//     }
+// }
 
 function itemRecieved(item) {
     console.log(item);
-}
-
-function actionOnClick() {
-    console.log('Hunger:', hunger);
-    depleteHunger();
-    console.log('Hunger:', hunger);
 }
 
 function eat(foodType) {
@@ -105,20 +115,12 @@ function drink() {
     }
 }
 
-function depleteHunger() {
-    hunger -= DEPLETION_RATE;
-}
-
-function depleteThirst() {
-    thirst -= DEPLETION_RATE;
-}
-
 function getRandomLocation() {
     const MIN_X = 5;
-    const MIN_Y = 458;
+    const MIN_Y = 570;
 
-    const MAX_X = 865;
-    const MAX_Y = 585;
+    const MAX_X = 950;
+    const MAX_Y = 700;
 
     Math.floor(Math.random() * 10 + 1);
 
