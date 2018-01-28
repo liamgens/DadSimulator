@@ -30,8 +30,8 @@ html, body {
 
 .reset {
     position: absolute;
-    right: 6px;
-    top: 10px;
+    right: 10px;
+    bottom: 15px;
     margin-bottom: auto;
 }
 
@@ -128,9 +128,12 @@ canvas {
     display: grid;
 }
 
+.item span {
+    text-align: center;
+}
+
 .item img {
     height: 64px;
-    margin-right: 16px;
     width: auto;
     cursor: grab;
     cursor: -moz-grab;
@@ -183,7 +186,7 @@ canvas {
 
 .popshop .navbar span {
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     justify-content: right;
     align-items: center;
     height: 100%;
