@@ -29,4 +29,14 @@ const GAME_PRODUCTS = {
             thirst: 0,
         },
     },
+    car: {
+        description: "A badass new car for your pops.",
+        price: 25000,
+        stat: {
+            health: 100,
+            happiness: 100,
+            hunger: 0,
+            thirst: 0,
+        },
+    },
 }
