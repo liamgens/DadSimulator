@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
 html, body {
-    height: auto;
+    height: 1vh;
     width: auto;
     display: grid;
-    background-color: #6d85b3
+    background-color: #6d85b3;
+    zoom: .8;
+    -moz-transform: scale(0.8);
 }
 
 .title {
@@ -49,7 +51,7 @@ canvas {
 .stats .bar{
     height: 20px;
     width: 200px;
-    background-color: gold;
+    background-color: #F8ECC2   ;
     margin-right: 10px;
     margin-top: 35px;
 }
@@ -185,7 +187,7 @@ canvas {
     background: #92cd41;
     display: flex;
     position: relative;
-    text-align: center;
+    justify-content: center;
     font-size: 10px;
     font-family: "Press Start 2P", cursive;
     text-decoration: none;
