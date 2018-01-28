@@ -8,6 +8,7 @@ if (!Cookies.get("gameStarted")) {
 
 loadShopItems()
 updateInventory()
+updateAllowance()
 
 function loadShopItems() {
     for (let name in GAME_PRODUCTS) {
@@ -45,6 +46,10 @@ function updateInventory() {
     updateStats()
 }
 
+function updateAllowance() {
+    $('#allowance').text(`Allowance: $${Cookies.get("allowance")}`)
+}
+
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id)
 }
@@ -70,7 +75,7 @@ function closePopShop() {
 
 function buyItem(item) {
     let allItems = Cookies.getJSON("items")
-    const totalMoney = Cookies.getJSON("totalMoney");
+    const totalMoney = Cookies.getJSON("totalMoney")
     const itemPrice = GAME_PRODUCTS[item].price
     if (totalMoney - itemPrice < 0) {
         alert("You've got no money, good job kid.")

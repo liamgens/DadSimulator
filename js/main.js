@@ -75,9 +75,9 @@ function create() {
 
     game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, payday, this);
 
-    game.time.events.repeat(Phaser.Timer.SECOND * 450, Infinity, updateAllowance, this);
+    game.time.events.repeat(Phaser.Timer.SECOND * 450, Infinity, addAllowance, this);
 
-
+//liam  ur weird
 
 
 }
@@ -195,6 +195,7 @@ function payday() {
     updateInventory();
 }
 
-function updateAllowance() {
+function addAllowance() {
     Cookies.set("allowance", Cookies.getJSON("allowance") + 5);
+    updateAllowance()
 }
