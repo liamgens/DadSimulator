@@ -94,7 +94,13 @@ function create() {
 
 }
 
-function update() { }
+function update() { alive(); }
+
+function alive() {
+    if (getStat('HEALTH') == 0) {
+        endGame();
+    }
+}
 
 function moveDad() {
     // Moves the dad around the floor in the room
@@ -154,10 +160,10 @@ function itemRecieved(item) {
 }
 
 function getRandomLocation() {
-    const MIN_X = 5;
+    const MIN_X = 70;
     const MIN_Y = 570;
 
-    const MAX_X = 950;
+    const MAX_X = 970;
     const MAX_Y = 700;
 
     Math.floor(Math.random() * 10 + 1);
