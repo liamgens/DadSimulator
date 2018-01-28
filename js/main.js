@@ -5,7 +5,7 @@ let game = new Phaser.Game(1050, 588, Phaser.AUTO, 'game', {
 const MAX_STAT = 100;
 const MIN_STAT = 0;
 
-let dad, beer, burger, chicken;
+let dad, beer, burger, chicken, sound;
 let hasItem = false;
 
 function preload() {
@@ -68,11 +68,15 @@ function create() {
     //Have the dad make jokes every so often
     game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, makeJoke, this);
 
+    game.time.events.repeat(Phaser.Timer.SECOND, Infinity, decrementStats, this);
+
 }
 
 function update() {
 
 }
+
+
 
 function moveDad() {
     // Moves the dad around the floor in the room
