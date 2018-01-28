@@ -14,7 +14,7 @@ function loadShopItems() {
         let item = GAME_PRODUCTS[name]
         $('#shop-items').append(`
             <div id="${name}" class="shop-item">
-                <img src="assets/${name}.png" />
+                <img draggable="false" src="assets/${name}.png" />
                 <div class="description">
                     <span class="name">${name.charAt(0).toUpperCase() + name.slice(1)}</span>
                     <button onclick="buyItem('${name}')">Buy +1</button>

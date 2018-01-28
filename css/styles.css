@@ -9,7 +9,12 @@ html, body {
 
 .title {
     font-family: "Press Start 2P", cursive;
+    font-size: 25px;
     text-align: center;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 canvas {
@@ -88,6 +93,7 @@ canvas {
     width: 80%;
     overflow-x: auto;
     overflow-y: hidden;
+    border-right: solid;
 }
 
 .item {
@@ -112,6 +118,13 @@ canvas {
 .buttons {
     display: grid;
     padding: 25px;
+    margin-right: 10px;
+}
+
+.buttons.allowance {
+    padding-left: 0;
+    padding-right: 0;
+    border-right: solid;
 }
 
 .money {
@@ -131,11 +144,13 @@ canvas {
 }
 
 .popshop .navbar {
+    position: fixed;
     height: 32px;
-    width: 100%;
+    width: 500px;
     background-color: brown;
     color: white;
     text-align: right;
+    z-index: 10000;
 }
 
 .popshop .navbar span {
@@ -183,7 +198,6 @@ canvas {
     width: 100%;
     padding: 10px;
     background: #92cd41;
-    display: flex;
     position: relative;
     justify-content: center;
     font-size: 10px;
