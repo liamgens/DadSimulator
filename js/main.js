@@ -90,7 +90,7 @@ function create() {
 
     game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, payday, this);
 
-    game.time.events.repeat(Phaser.Timer.SECOND * 450, Infinity, addAllowance, this);
+    game.time.events.repeat(Phaser.Timer.SECOND * 225, Infinity, addAllowance, this);
 
 }
 
