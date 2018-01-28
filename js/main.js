@@ -17,17 +17,11 @@ let button;
 
 
 function preload() {
-    // Basic game canvas initialization
-    // game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-
-    // game.stage.backgroundColor = '#eee';
-
     // Load in the game assests
     game.load.image('dad', 'assets/dad.png');
     game.load.image('beer', 'assets/beer.jpg');
     game.load.image('button', 'assets/button.png');
     game.load.image('background', 'assets/livingroom.png');
-
 
 }
 
@@ -50,16 +44,20 @@ function create() {
     dad = game.add.sprite(start.x, start.y, 'dad');
     game.physics.enable(dad, Phaser.Physics.ARCADE);
     dad.scale.setTo(0.6, 0.6);
-    // dad.enableBody = true;
-    // dad.body.collideWorldBounds = true;
 
-    // Button testing
-    // button = game.add.button(100, 100, 'button', actionOnClick, this, 2, 1, 0);
-    // button.scale.setTo(0.1, 0.1);
+    game.time.events.repeat(Phaser.Timer.SECOND * 8, Infinity, moveDad, this);
 
 }
 
 function update() {
+
+}
+
+function moveDad() {
+    let target = getRandomLocation();
+    game.physics.arcade.moveToXY(dad, target.x, target.y, 100, 4000);
+    setTimeout(function () { dad.body.velocity.setTo(0, 0); }, 4000);
+
 
 }
 
