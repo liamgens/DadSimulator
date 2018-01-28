@@ -3,8 +3,13 @@
 html, body {
     height: auto;
     width: auto;
-    margin-top: 50px;
     display: grid;
+    background-color: #6d85b3
+}
+
+.title {
+    font-family: "Press Start 2P", cursive;
+    text-align: center;
 }
 
 canvas {
