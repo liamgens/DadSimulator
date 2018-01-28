@@ -2,11 +2,8 @@ let game = new Phaser.Game(1050, 588, Phaser.AUTO, 'game', {
     preload: preload, create: create, update: update
 });
 
-
 const MAX_STAT = 100;
 const MIN_STAT = 0;
-
-const DEPLETION_RATE = 1;
 
 let dad;
 let beer;
@@ -33,8 +30,6 @@ function create() {
             happiness: MAX_STAT
         });
     }
-
-    isDadChugginOut = false;
 
     game.background = game.add.sprite(0, 0, 'background');
 
