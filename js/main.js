@@ -29,6 +29,7 @@ function create() {
             thirst: MAX_STAT,
             happiness: MAX_STAT
         });
+        updateStats();
     }
 
     // Render the living room
@@ -123,9 +124,11 @@ function itemRecieved(item) {
             break;
         case 'BURGER':
             burger.visible = true;
+            updateStat('HUNGER', 25);
             break;
         case 'CHICKEN':
             chicken.visible = true;
+            updateStat('HUNGER', 15);
             break;
         default:
             break;
