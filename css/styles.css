@@ -186,7 +186,7 @@ canvas {
 
 .popshop .navbar span {
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     justify-content: right;
     align-items: center;
     height: 100%;
