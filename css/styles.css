@@ -5,8 +5,6 @@ html, body {
     width: auto;
     display: grid;
     background-color: #6d85b3;
-    zoom: .8;
-    -moz-transform: scale(0.8);
 }
 
 .title {
