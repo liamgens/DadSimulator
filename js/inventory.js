@@ -41,6 +41,15 @@ function updateInventory() {
     }
 
     $('#money').text(`$${Cookies.get("totalMoney")}`)
+    
+    updateStats()
+}
+
+function updateStats() {
+    $("#happiness").width(`${getStat("HAPPINESS")}%`).text(`Happiness ${getStat("HAPPINESS")}%`)
+    $("#health").width(`${getStat("HEALTH")}%`).text(`Health ${getStat("HAPPINESS")}%`)
+    $("#hunger").width(`${getStat("HUNGER")}%`).text(`Hunger ${getStat("HAPPINESS")}%`)
+    $("#thirst").width(`${getStat("THIRST")}%`).text(`Thirst ${getStat("HAPPINESS")}%`)
 }
 
 function drag(ev) {
@@ -74,7 +83,7 @@ function buyItem(item) {
         alert("You've got no money, good job kid.")
         return
     }
-    
+
     if (allItems) {
         let obj = allItems.find((obj) => obj.name === item)
         if (obj) {
