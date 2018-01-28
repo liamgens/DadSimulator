@@ -14,7 +14,7 @@ function loadShopItems() {
         let item = GAME_PRODUCTS[name]
         $('#shop-items').append(`
             <div id="${name}" class="shop-item">
-                <img src="assets/${name}.jpg" />
+                <img src="assets/${name}.png" />
                 <div class="description">
                     <span class="name">${name.charAt(0).toUpperCase() + name.slice(1)}</span>
                     <button onclick="buyItem('${name}')">Buy +1</button>
@@ -51,7 +51,6 @@ function drop(ev) {
     ev.preventDefault()
     var data = ev.dataTransfer.getData("text")
     itemRecieved(data.toUpperCase())
-
     removeItem(data)
 }
 
@@ -69,6 +68,9 @@ function closePopShop() {
 
 function buyItem(item) {
     let allItems = Cookies.getJSON("items")
+    const totalMoney = Cookies.getJSON("totalMoney");
+    const itemPrice = GAME_PRODUCTS[item].price
+    if (totalMoney-itemPrice < 0) return;
     if (allItems) {
         let obj = allItems.find((obj) => obj.name === item)
         if (obj) {
@@ -81,6 +83,7 @@ function buyItem(item) {
             })
             Cookies.set("items", allItems)
         }
+        Cookies.set("totalMoney", totalMoney-itemPrice)
     }
 
     updateInventory()
