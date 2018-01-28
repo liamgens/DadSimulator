@@ -10,6 +10,12 @@ loadShopItems()
 updateInventory()
 updateAllowance()
 
+function resetGame() {
+    Object.keys(Cookies.get()).forEach(function(cookieName) {
+        Cookies.remove(cookieName)
+    });
+    window.location.reload()
+}
 function loadShopItems() {
     for (let name in GAME_PRODUCTS) {
         let item = GAME_PRODUCTS[name]

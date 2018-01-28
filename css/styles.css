@@ -7,6 +7,12 @@ html, body {
     background-color: #6d85b3;
 }
 
+.reset {
+    position: absolute;
+    right: 10px;
+    margin-bottom: auto;
+}
+
 .title {
     font-family: "Press Start 2P", cursive;
     font-size: 25px;
