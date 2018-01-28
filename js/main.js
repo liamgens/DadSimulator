@@ -17,6 +17,7 @@ function preload() {
     game.load.image('speech', 'assets/speech.png');
     game.load.image('burger', 'assets/burger.png');
     game.load.image('chicken', 'assets/chicken.png');
+    game.load.audio('music', 'assets/music.mp3');
 }
 
 function create() {
@@ -30,6 +31,9 @@ function create() {
             happiness: MAX_STAT
         });
     }
+
+    game.sound.setDecodedCallback(sounds, start, this);
+
 
     // Render the living room
     game.background = game.add.sprite(0, 0, 'background');
