@@ -46,3 +46,10 @@ function validateStats(stats) {
 
     return correctedStats;
 }
+
+function decrementStats() {
+    updateStat('HUNGER', -1);
+    updateStat('HAPPINESS', -1);
+    updateStat('THIRST', -1);
+    updateStats();
+}
