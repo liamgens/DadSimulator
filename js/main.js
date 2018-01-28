@@ -5,10 +5,8 @@ let game = new Phaser.Game(1050, 588, Phaser.AUTO, 'game', {
 const MAX_STAT = 100;
 const MIN_STAT = 0;
 
-let dad;
-let beer;
-let burger;
-let chicken;
+let dad, beer, burger, chicken;
+let hasItem = false;
 
 function preload() {
     // Load in the game assests
@@ -19,7 +17,6 @@ function preload() {
     game.load.image('speech', 'assets/speech.png');
     game.load.image('burger', 'assets/burger.png');
     game.load.image('chicken', 'assets/chicken.png');
-
 }
 
 function create() {
@@ -34,6 +31,7 @@ function create() {
         });
     }
 
+    // Render the living room
     game.background = game.add.sprite(0, 0, 'background');
 
     // Add in game physics
@@ -46,12 +44,29 @@ function create() {
     dad.scale.setTo(0.6, 0.6);
     dad.anchor.setTo(0.5, 0.5);
 
+    // Draw all items here and hide them to start
+    chicken = game.add.sprite(105, -7, 'chicken');
+    chicken.scale.setTo(0.5, 0.5);
+    chicken.angle = 60;
+    dad.addChild(chicken);
+    chicken.visible = false;
+
+    burger = game.add.sprite(55, 35, 'burger');
+    burger.scale.setTo(0.2, 0.2);
+    dad.addChild(burger);
+    burger.visible = false;
+
+    beer = game.add.sprite(75, 35, 'beer');
+    beer.scale.setTo(0.4, 0.4);
+    beer.angle = 30;
+    dad.addChild(beer);
+    beer.visible = false;
+
     // Have the dad move around the room
     game.time.events.repeat(Phaser.Timer.SECOND * 7, Infinity, moveDad, this);
 
     //Have the dad make jokes every so often
     game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, makeJoke, this);
-
 
 }
 
@@ -90,48 +105,24 @@ function speak(phrase) {
     }, 10000);
 }
 
-function drinkBeer() {
-    beer = game.add.sprite(75, 35, 'beer');
-    beer.scale.setTo(0.4, 0.4);
-    beer.angle = 30;
-    dad.addChild(beer);
-
-    setTimeout(function () {
-        beer.kill();
-    }, 7000);
-}
-
-function eatBurger() {
-    burger = game.add.sprite(55, 35, 'burger');
-    burger.scale.setTo(0.2, 0.2);
-    dad.addChild(burger);
-
-    setTimeout(function () {
-        burger.kill();
-    }, 7000);
-}
-
-function eatChicken() {
-    chicken = game.add.sprite(105, -7, 'chicken');
-    chicken.scale.setTo(0.5, 0.5);
-    chicken.angle = 60;
-    dad.addChild(chicken);
-
-    setTimeout(function () {
-        chicken.kill();
-    }, 7000);
+function hide() {
+    beer.visible = false;
 }
 
 function itemRecieved(item) {
+    if (hasItem) {
+        killAllItems();
+    }
+    hasItem = true;
     switch (item) {
         case 'BEER':
-            drinkBeer();
+            beer.visible = true;
             break;
         case 'BURGER':
-            eatBurger();
+            burger.visible = true;
             break;
         case 'CHICKEN':
-            eatChicken();
+            chicken.visible = true;
             break;
         default:
             break;
@@ -171,6 +162,10 @@ function makeJoke() {
     }).then(function (text) {
         speak(text);
     });
+}
 
-
+function killAllItems() {
+    beer.visible = false;
+    burger.visible = false;
+    chicken.visible = false;
 }

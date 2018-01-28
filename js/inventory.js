@@ -70,7 +70,7 @@ function buyItem(item) {
     let allItems = Cookies.getJSON("items")
     const totalMoney = Cookies.getJSON("totalMoney");
     const itemPrice = GAME_PRODUCTS[item].price
-    if (totalMoney-itemPrice < 0) return;
+    if (totalMoney - itemPrice < 0) return;
     if (allItems) {
         let obj = allItems.find((obj) => obj.name === item)
         if (obj) {
@@ -83,7 +83,7 @@ function buyItem(item) {
             })
             Cookies.set("items", allItems)
         }
-        Cookies.set("totalMoney", totalMoney-itemPrice)
+        Cookies.set("totalMoney", totalMoney - itemPrice)
     }
 
     updateInventory()
