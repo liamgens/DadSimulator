@@ -27,6 +27,7 @@ canvas {
     margin-right:auto;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    padding-bottom: 10px;
 }
 
 .stats {
@@ -44,6 +45,7 @@ canvas {
     align-self: center;
     font-family: "Press Start 2P", cursive;
     font-size: 10px;
+    z-index: 10;
 }
 
 .stats .bar{
