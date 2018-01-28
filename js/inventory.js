@@ -45,13 +45,6 @@ function updateInventory() {
     updateStats()
 }
 
-function updateStats() {
-    $("#happiness").width(`${getStat("HAPPINESS")}%`).text(`Happiness ${getStat("HAPPINESS")}%`)
-    $("#health").width(`${getStat("HEALTH")}%`).text(`Health ${getStat("HAPPINESS")}%`)
-    $("#hunger").width(`${getStat("HUNGER")}%`).text(`Hunger ${getStat("HAPPINESS")}%`)
-    $("#thirst").width(`${getStat("THIRST")}%`).text(`Thirst ${getStat("HAPPINESS")}%`)
-}
-
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id)
 }

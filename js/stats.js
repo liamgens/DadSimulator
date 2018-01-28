@@ -33,6 +33,13 @@ function getStat(statType) {
     }
 }
 
+function updateStats() {
+    $("#happiness").width(`${getStat("HAPPINESS")}%`).parent().find(".text").text(`Happiness ${getStat("HAPPINESS")}%`)
+    $("#health").width(`${getStat("HEALTH")}%`).parent().find(".text").text(`Health ${getStat("HEALTH")}%`)
+    $("#hunger").width(`${getStat("HUNGER")}%`).parent().find(".text").text(`Hunger ${getStat("HUNGER")}%`)
+    $("#thirst").width(`${getStat("THIRST")}%`).parent().find(".text").text(`Thirst ${getStat("THIRST")}%`)
+}
+
 function validateStats(stats) {
     let correctedStats = stats;
 

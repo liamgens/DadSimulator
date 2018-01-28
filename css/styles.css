@@ -50,11 +50,15 @@ canvas {
 }
 
 .stats .bar .barvalue {
-    height: 26px;
+    height: 100%;
     width: 90%;
     text-align: center;
     vertical-align: middle;
     line-height: 26px;
+}
+
+.stats .bar .text {
+    margin-top: 5px;
 }
 
 .stats .bar .barvalue#happiness {
