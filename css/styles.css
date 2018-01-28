@@ -24,11 +24,16 @@ canvas {
 }
 
 .items {
+    display: flex;
     padding: 10px;
     width: 80%;
 }
 
 .item {
+    display: grid;
+}
+
+.item img {
     height: 64px;
     margin-right: 16px;
     width: auto;
@@ -37,7 +42,7 @@ canvas {
     cursor: -webkit-grab;
 }
 
-.item:active {
+.item img:active {
     cursor: grabbing;
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
@@ -47,6 +52,62 @@ canvas {
     padding: 25px;
 }
 
+.popshop {
+    display: none;
+    position: absolute;
+    background-color: #F8ECC2;
+    height: 800px;
+    width: 500px;
+    right: 10px;
+    top: 20px;
+}
+
+.popshop .navbar {
+    height: 32px;
+    width: 100%;
+    background-color: brown;
+    color: white;
+    text-align: right;
+}
+
+.popshop .navbar span {
+    cursor: pointer;
+}
+
+.shop-item {
+    display: flex;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin: 30px;
+}
+
+.shop-item img {
+    height: 96px;
+    width: auto;
+    margin-right: 16px;
+    align-items: center;
+}
+
+.shop-item button {
+    position: absolute;
+    right: 40px;
+}
+
+.shop-item h3, span {
+    margin-top: 0px;
+    font-family: "Press Start 2P", cursive;
+}
+
+.description .name {
+    font-size: 1.25rem;
+}
+
+.description .price {
+    font-size: .5rem;
+}
 
 /* Eight Bit Buttons */
 
