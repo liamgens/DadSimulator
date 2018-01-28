@@ -3,8 +3,6 @@ let game = new Phaser.Game(1050, 588, Phaser.AUTO, 'game', {
 });
 
 
-let health, hunger, thirst, happiness; // The dad's stats
-
 const MAX_STAT = 100;
 const MIN_STAT = 0;
 
@@ -15,9 +13,6 @@ let beer;
 
 let button;
 
-let isDadChugginOut;
-
-
 function preload() {
     // Load in the game assests
     game.load.image('dad', 'assets/dad.png');
@@ -25,15 +20,20 @@ function preload() {
     game.load.image('button', 'assets/button.png');
     game.load.image('background', 'assets/livingroom.png');
     game.load.image('speech', 'assets/speech.png');
-
 }
 
 function create() {
     // Initialize all the dad's stats to full 100%
-    health = MAX_STAT;
-    hunger = MAX_STAT;
-    thirst = MAX_STAT;
-    happiness = MAX_STAT;
+    if (!Cookies.get("gameStarted")) {
+        Cookies.set("gameStarted", true);
+        Cookies.set("dad", {
+            health: MAX_STAT,
+            hunger: MAX_STAT,
+            thirst: MAX_STAT,
+            happiness: MAX_STAT
+        });
+    }
+
     isDadChugginOut = false;
 
     game.background = game.add.sprite(0, 0, 'background');
@@ -84,14 +84,12 @@ function speak(phrase) {
 }
 
 function drinkBeer() {
-    isDadChugginOut = true;
     beer = game.add.sprite(75, 35, 'beer');
     beer.scale.setTo(0.4, 0.4);
     beer.angle = 30;
     dad.addChild(beer);
     setTimeout(function () {
         beer.kill();
-        isDadChugginOut = false;
     }, 7000);
 }
 
@@ -124,5 +122,54 @@ function getRandomLocation() {
 
 function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function updateStat(statType, value) {
+    let stats = Cookies.getJSON("dad");
+    console.log(stats);
+    switch (statType) {
+        case 'HEALTH':
+            stats.health += value;
+            break;
+        case 'HUNGER':
+            stats.hunger += value;
+            break;
+        case 'THIRST':
+            stats.thirst += value;
+            break;
+        case 'HAPPINESS':
+            stats.happiness += value;
+            break;
+    }
+
+    stats = validateStats(stats);
+    Cookies.set("dad", stats);
+}
+
+function getStat(statType) {
+    switch (statType) {
+        case 'HEALTH':
+            return Cookies.getJSON("dad").health;
+        case 'HUNGER':
+            return Cookies.getJSON("dad").hunger;
+        case 'THIRST':
+            return Cookies.getJSON("dad").thirst;
+        case 'HAPPINESS':
+            return Cookies.getJSON("dad").happiness;
+    }
+}
+
+function validateStats(stats) {
+    let correctedStats = stats;
+
+    for (let stat in stats) {
+        if (stats[stat] < MIN_STAT) {
+            correctedStats[stat] = MIN_STAT;
+        } else if (stats[stat] > MAX_STAT) {
+            correctedStats[stat] = MAX_STAT;
+        }
+    }
+
+    return correctedStats;
 }
 
