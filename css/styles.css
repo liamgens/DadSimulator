@@ -49,7 +49,12 @@ canvas {
 }
 
 .buttons {
+    display: grid;
     padding: 25px;
+}
+
+.money {
+    text-align: center;
 }
 
 .popshop {
@@ -115,12 +120,13 @@ canvas {
     width: 100%;
     padding: 10px;
     background: #92cd41;
-    display: inline-block;
+    display: flex;
     position: relative;
     text-align: center;
     font-size: 10px;
     font-family: "Press Start 2P", cursive;
     text-decoration: none;
+    margin-bottom: 10px;
     color: white;
     -webkit-box-shadow: inset -4px -4px 0px 0px #4aa52e;
             box-shadow: inset -4px -4px 0px 0px #4aa52e;

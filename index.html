@@ -17,26 +17,30 @@
         </div>
         <div class="buttons">
             <a class="eightbit-btn" onclick="openPopShop();">Pop Shop</a>
+            <span class="money" id="money">$0</span>
         </div>
     </div>
 
 
     <div id="popshop" class="popshop">
         <div id="popshopnavbar" class="navbar"><span onclick="closePopShop();">🗙&nbsp;</span></div>
-        <div id="beer" class="shop-item">
-            <img src="assets/beer.jpg" />
-            <div class="description">
-                <span class="name">Beer</span>
-                <button onclick="buyItem()">Buy +1</button>
-                <br>
-                <span class="price">Price: $10</span>
-                <p>A nice, ice cold beer will keep your Dad's thirst quenched and happiness up.</p>
+        <div id="shop-items">
+            <div id="beer" class="shop-item">
+                <img src="assets/beer.jpg" />
+                <div class="description">
+                    <span class="name">Beer</span>
+                    <button onclick="buyItem('beer')">Buy +1</button>
+                    <br>
+                    <span class="price">Price: $10</span>
+                    <p>A nice, ice cold beer will keep your Dad's thirst quenched and happiness up.</p>
+                </div>
             </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/variables.js"></script>
     <script src="js/inventory.js"></script>
     <script src="js/main.js"></script>
 </body>
