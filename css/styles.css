@@ -128,9 +128,12 @@ canvas {
     display: grid;
 }
 
+.item span {
+    text-align: center;
+}
+
 .item img {
     height: 64px;
-    margin-right: 16px;
     width: auto;
     cursor: grab;
     cursor: -moz-grab;
