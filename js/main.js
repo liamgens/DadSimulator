@@ -5,7 +5,7 @@ let game = new Phaser.Game(1050, 588, Phaser.AUTO, 'game', {
 const MAX_STAT = 100;
 const MIN_STAT = 0;
 
-var dad, beer, burger, chicken, sound;
+var dad, beer, burger, chicken, drill, hammer;
 let hasItem = false;
 
 function preload() {
@@ -72,6 +72,12 @@ function create() {
     drill.angle = -45;
     dad.addChild(drill);
     drill.visible = false;
+
+    hammer = game.add.sprite(-140, 55, 'hammer');
+    hammer.scale.setTo(0.4, 0.4);
+    hammer.angle = -45;
+    dad.addChild(hammer);
+    hammer.visible = false;
 
     // Have the dad move around the room
     game.time.events.repeat(Phaser.Timer.SECOND * 7, Infinity, moveDad, this);
@@ -191,5 +197,5 @@ function payday() {
 
 function addAllowance() {
     Cookies.set("allowance", Cookies.getJSON("allowance") + 5);
-    updateAllowance()
+    updateAllowance();
 }
