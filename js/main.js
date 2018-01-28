@@ -29,6 +29,7 @@ function create() {
             thirst: MAX_STAT,
             happiness: MAX_STAT
         });
+        Cookies.set("allowance", 10);
         updateStats();
     }
 
@@ -69,7 +70,15 @@ function create() {
     //Have the dad make jokes every so often
     game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, makeJoke, this);
 
+    // Decrement the user stats
     game.time.events.repeat(Phaser.Timer.SECOND * 10, Infinity, decrementStats, this);
+
+    game.time.events.repeat(Phaser.Timer.SECOND * 30, Infinity, payday, this);
+
+    game.time.events.repeat(Phaser.Timer.SECOND * 450, Infinity, updateAllowance, this);
+
+
+
 
 }
 
@@ -179,4 +188,13 @@ function killAllItems() {
     beer.visible = false;
     burger.visible = false;
     chicken.visible = false;
+}
+
+function payday() {
+    Cookies.set("totalMoney", Cookies.getJSON("totalMoney") + Cookies.getJSON("allowance"));
+    updateInventory();
+}
+
+function updateAllowance() {
+    Cookies.set("allowance", Cookies.getJSON("allowance") + 5);
 }
