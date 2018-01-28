@@ -29,10 +29,12 @@ function loadShopItems() {
 
 function updateInventory() {
     const allItems = Cookies.getJSON("items")
+    console.log(allItems)
+    $('#inventoryitems').html("")
     for (let item of allItems) {
-        $('#inventoryitems').html(`
+        $('#inventoryitems').append(`
             <div class="item">
-                <img id="${item.name}" class="item" draggable="true" ondragstart="drag(event)" src="assets/${item.name}.jpg">
+                <img id="${item.name}" class="item" draggable="true" ondragstart="drag(event)" src="assets/${item.name}.png">
                 <span id="count">${item.quantity}</span>
             </div>
         `)
@@ -66,11 +68,17 @@ function closePopShop() {
 }
 
 function buyItem(item) {
-    const allItems = Cookies.getJSON("items")
+    let allItems = Cookies.getJSON("items")
     if (allItems) {
-        let obj = allItems.find((obj) => obj.name === "beer")
+        let obj = allItems.find((obj) => obj.name === item)
         if (obj) {
             obj.quantity = obj.quantity + 1
+            Cookies.set("items", allItems)
+        } else {
+            allItems.push({
+                name: item,
+                quantity: 1,
+            })
             Cookies.set("items", allItems)
         }
     }
@@ -81,9 +89,13 @@ function buyItem(item) {
 function removeItem(item) {
     const allItems = Cookies.getJSON("items")
     if (allItems) {
-        let obj = allItems.find((obj) => obj.name === "beer")
+        let obj = allItems.find((obj) => obj.name === item)
         if (obj) {
-            obj.quantity = obj.quantity - 1
+            if (obj.quantity === 1) {
+                allItems.splice(allItems.indexOf(obj), 1)
+            } else {
+                obj.quantity = obj.quantity - 1
+            }
             Cookies.set("items", allItems)
         }
     }
