@@ -20,6 +20,7 @@ function preload() {
     game.load.image('drill', 'assets/drill.png');
     game.load.image('hammer', 'assets/hammer.png');
     game.load.image('grill', 'assets/grill.png');
+    game.load.image('car', 'assets/car.png');
 }
 
 function create() {
@@ -144,6 +145,11 @@ function itemRecieved(item) {
         hammer.visible = false;
     }
 
+    if (item == "CAR") {
+        dad.kill();
+        dad = game.add.sprite(100, 250, 'car');
+    }
+
     hasItem = true;
 
     const data = GAME_PRODUCTS[item.toLowerCase()];
@@ -206,6 +212,6 @@ function payday() {
 }
 
 function addAllowance() {
-    Cookies.set("allowance", Cookies.getJSON("allowance") + 10);
+    Cookies.set("allowance", Cookies.getJSON("allowance") + (2 * Cookies.getJSON("allowance")));
     updateAllowance();
 }
