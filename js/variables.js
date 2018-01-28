@@ -29,6 +29,36 @@ const GAME_PRODUCTS = {
             thirst: 0,
         },
     },
+    hammer: {
+        description: "IT'S HAMMAHTIME",
+        price: 6,
+        stat: {
+            health: 0,
+            happiness: 10,
+            hunger: 0,
+            thirst: 0,
+        },
+    },
+    drill: {
+        description: "A nice sturdy, can't screw this up.",
+        price: 35,
+        stat: {
+            health: 0,
+            happiness: 30,
+            hunger: 0,
+            thirst: 0,
+        },
+    },
+    grill: {
+        description: "Grill up some patties in the yard.",
+        price: 150,
+        stat: {
+            health: 0,
+            happiness: 40,
+            hunger: 0,
+            thirst: 0,
+        },
+    },
     car: {
         description: "A badass new car for your pops.",
         price: 25000,

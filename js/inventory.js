@@ -70,7 +70,11 @@ function buyItem(item) {
     let allItems = Cookies.getJSON("items")
     const totalMoney = Cookies.getJSON("totalMoney");
     const itemPrice = GAME_PRODUCTS[item].price
-    if (totalMoney - itemPrice < 0) return;
+    if (totalMoney - itemPrice < 0) {
+        alert("You've got no money, good job kid.")
+        return
+    }
+
     if (allItems) {
         let obj = allItems.find((obj) => obj.name === item)
         if (obj) {
